@@ -1,29 +1,49 @@
 package com.exemplo.leilao.entidades;
 
-import io.micronaut.serde.annotation.Serdeable;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.Data;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "dispositivos")
-@Data
-@Serdeable
 public class Dispositivo {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String tipo;
-    private String marca;
-    private String modelo;
 
-    private Leilao leilao; // Associação com Leilao
+    private String nome;
+
+    private Double valor;
+
+    @ManyToOne
+    @JoinColumn(name = "leilao_id", nullable = false)  // Associação com Leilão
+    private Leilao leilao;
+
+    // Getters e Setters
+    public Long getId() {
+        return id;
+    }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Double getValor() {
+        return valor;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
+    }
+
+    public Leilao getLeilao() {
+        return leilao;
     }
 
     public void setLeilao(Leilao leilao) {

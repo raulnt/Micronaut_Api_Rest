@@ -1,4 +1,4 @@
-package com.exemplo.leilao.repositorio;
+package com.exemplo.leilao.repositorios;
 
 import com.exemplo.leilao.entidades.InstituicaoFinanceira;
 import io.micronaut.data.annotation.Repository;
